@@ -1,0 +1,13 @@
+.status-bar {
+  height: 60px;
+}
+
+.well {
+  text-align: center;
+  width:50%;
+  margin: 0 auto;
+}
+
+.picture-help {
+  color:#999;  
+}

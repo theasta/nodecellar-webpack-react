@@ -1,0 +1,22 @@
+.homeSection {
+    font-size: 36px;
+    color: white;
+    background-size: cover;
+    background: url('img/home-background.jpg') no-repeat;
+    margin-top: -19px;
+    padding: 180px;
+    text-align : center;
+    text-shadow: 1px 1px 1px #000;
+}
+
+@media only screen and ( max-width : 1000px ) {
+    .homeSection {
+        padding:100px;
+    }
+}
+
+@media only screen and ( max-width : 480px ) {
+    .homeSection {
+        padding:32px;
+    }
+}

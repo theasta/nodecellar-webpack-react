@@ -1,0 +1,13 @@
+.homeSection .-btns {
+    margin-top: 20px;
+    opacity: .9;
+}
+
+.homeSection .-btns img {
+    margin-right:6px;
+}
+
+.homeSection .btn {
+    width: 200px;
+    margin: 10px 4px;
+}
