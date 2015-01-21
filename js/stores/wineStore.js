@@ -12,6 +12,10 @@ var wineStore = assign({}, EventEmitter.prototype, {
         return _wines;
     },
 
+    getTotalCount: function () {
+        return _wines.length;
+    },
+
     emitChange: function() {
         this.emit(conf.CHANGE_EVENT);
     },

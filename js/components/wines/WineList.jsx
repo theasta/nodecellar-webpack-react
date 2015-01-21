@@ -2,7 +2,8 @@ var React = require('react');
 
 var WineListItem = require('./WineListItem');
 var wineStore = require('../../stores/wineStore');
-
+var paginationConf = require('../../constants/pagination');
+var PaginatorMixin = require('../../mixins/PaginatorMixin');
 
 var getStateFromStores = function () {
     return {
@@ -11,24 +12,27 @@ var getStateFromStores = function () {
 };
 
 module.exports = React.createClass({
+    mixins: [
+        PaginatorMixin
+    ],
+    getDefaultProps: function() {
+        return paginationConf;
+    },
     getInitialState: function() {
         return getStateFromStores();
     },
-
     _onChange: function () {
         this.setState(getStateFromStores());
     },
-    
     componentDidMount: function() {
         wineStore.addChangeListener(this._onChange);
     },
-
     componentWillUnmount: function() {
         wineStore.removeChangeListener(this._onChange);
     },
-    
     render: function () {
-        var WineListItems = this.state.wines.map(function (wine) {
+        // get number of items
+        var WineListItems = this.paginateItems(this.state.wines).map(function (wine) {
             return (
                 <WineListItem
                     key={wine._id}
@@ -36,6 +40,10 @@ module.exports = React.createClass({
                 />
             );
         });
-        return <ul className="thumbnails list-inline">{WineListItems}</ul>;
+        return (
+            <ul className="thumbnails list-inline">
+                {WineListItems}
+            </ul>
+        );
     }
 });
