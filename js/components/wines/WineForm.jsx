@@ -37,7 +37,7 @@ module.exports = React.createClass({
     render: function () {
         var options = [];
         for (var year = conf.YEAR_MAX; year >= conf.YEAR_MIN; year--) {
-            options.push(<option value={year} selected>{year}</option>);
+            options.push(<option value={year} key={year}>{year}</option>);
         }
         var picture = conf.WINE_PICTURE_ROOT_URL + (this.state.picture ? this.state.picture : 'generic.jpg');
         return (

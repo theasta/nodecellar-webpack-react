@@ -2,9 +2,12 @@ var React = require('react');
 var { Nav, Navbar, NavItem, DropdownButton, MenuItem, Grid, Row, Glyphicon } =  require('react-bootstrap');
 var { NavItemLink } = require('react-router-bootstrap');
 var { RouteHandler } = require('react-router');
-var Footer = require("./components/footer/Footer");
+var Footer = require("./footer/Footer");
+var wineActions = require('./../actions/wineActionCreators');
 
-require('./actions/wineActionCreators').load();
+require('./App.css');
+
+wineActions.load();
 
 module.exports = React.createClass({
     render: function() {
@@ -12,7 +15,7 @@ module.exports = React.createClass({
             <div>
                 <Navbar>
                     <Nav>
-                        <NavItemLink eventKey={1} to="home">NodeCellar</NavItemLink>
+                        <NavItemLink eventKey={1} to="home" className="navbar-brand">NodeCellar</NavItemLink>
                         <NavItemLink eventKey={2} to="wines">Browse Wines</NavItemLink>
                         <NavItemLink eventKey={3} to="add"><Glyphicon glyph="edit"/> Add Wine</NavItemLink>
                     </Nav>
