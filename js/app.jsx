@@ -4,7 +4,7 @@ var { NavItemLink } = require('react-router-bootstrap');
 var { RouteHandler } = require('react-router');
 var Footer = require("./components/footer/Footer");
 
-require('./services/wineAPI').load();
+require('./actions/wineActionCreators').load();
 
 module.exports = React.createClass({
     render: function() {

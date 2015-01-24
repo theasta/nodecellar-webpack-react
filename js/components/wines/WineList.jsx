@@ -5,12 +5,6 @@ var wineStore = require('../../stores/wineStore');
 var paginationConf = require('../../constants/pagination');
 var PaginatorMixin = require('../../mixins/PaginatorMixin');
 
-var getStateFromStores = function () {
-    return {
-        wines: wineStore.getAll()
-    };
-};
-
 module.exports = React.createClass({
     mixins: [
         PaginatorMixin
@@ -19,16 +13,21 @@ module.exports = React.createClass({
         return paginationConf;
     },
     getInitialState: function() {
-        return getStateFromStores();
+        return this.getStateFromStore();
     },
     _onChange: function () {
-        this.setState(getStateFromStores());
+        this.setState(this.getStateFromStore());
     },
     componentDidMount: function() {
         wineStore.addChangeListener(this._onChange);
     },
     componentWillUnmount: function() {
         wineStore.removeChangeListener(this._onChange);
+    },
+    getStateFromStore: function () {
+        return {
+            wines: wineStore.getAll()
+        };
     },
     render: function () {
         // get number of items

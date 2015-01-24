@@ -4,7 +4,6 @@ var { Col } = require('react-bootstrap');
 var WineList = require('../wines/WineList');
 var WinePaginator = require('../wines/WinePaginator');
 
-
 module.exports = React.createClass({
     mixins: [ Router.State ],
     render: function() {

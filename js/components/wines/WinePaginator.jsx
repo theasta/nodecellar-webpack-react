@@ -13,7 +13,6 @@ module.exports = React.createClass({
         return getStateFromStores();
     },
     _onChange: function () {
-        console.log('_onChange paginator');
         this.setState(getStateFromStores());
     },
     componentDidMount: function() {
@@ -23,7 +22,6 @@ module.exports = React.createClass({
         wineStore.removeChangeListener(this._onChange);
     },
     render: function () {
-        console.log('render Paginator');
         return (
             <Paginator {... this.props} totalItems={this.state.totalItems} />
         );
