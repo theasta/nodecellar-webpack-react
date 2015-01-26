@@ -99,6 +99,12 @@ module.exports = function (options) {
         });
     }
 
+    plugins.push(new webpack.DefinePlugin(
+            {
+                __DEV__: !!options.devServer
+            }
+    ));
+
     if (options.commonsChunk) {
         plugins.push(new webpack.optimize.CommonsChunkPlugin("commons", "commons.js" + (options.longTermCaching ? "?[chunkhash]" : "")));
     }
@@ -114,7 +120,7 @@ module.exports = function (options) {
             loaders: loaders
         },
         debug: options.debug,
-        debugType: options.debugType,
+        devtool: options.debugType,
         externals: externals,
         resolve: {
             extensions: extensions,

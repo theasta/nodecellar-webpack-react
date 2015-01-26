@@ -1,9 +1,9 @@
 var React = require('react');
+var { Link } = require('react-router');
 var { Nav } = require('react-bootstrap');
 var { NavItemLink } = require('react-router-bootstrap');
-var { Link } = require('react-router');
-var paginationConf = require('../../constants/pagination');
 var PaginatorMixin = require('../../mixins/PaginatorMixin');
+var paginationConf = require('../../constants/pagination');
 
 module.exports = React.createClass({
     mixins: [

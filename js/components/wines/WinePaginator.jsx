@@ -2,18 +2,17 @@ var React = require('react');
 var Paginator = require('../paginator/Paginator');
 var wineStore = require('../../stores/wineStore');
 
-var getStateFromStores = function () {
-    return {
-        totalItems: wineStore.getTotalCount()
-    };
-};
-
 module.exports = React.createClass({
     getInitialState: function() {
-        return getStateFromStores();
+        return this.getStateFromStore();
     },
     _onChange: function () {
-        this.setState(getStateFromStores());
+        this.setState(this.getStateFromStore());
+    },
+    getStateFromStore: function () {
+        return {
+            totalItems: wineStore.getTotalCount()
+        };
     },
     componentDidMount: function() {
         wineStore.addChangeListener(this._onChange);

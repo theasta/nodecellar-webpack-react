@@ -1,6 +1,6 @@
 var React = require('react');
-var WineForm = require('../wines/WineForm');
 var Router = require('react-router');
+var WineForm = require('../wines/WineForm');
 
 module.exports = React.createClass({
     mixins: [ Router.State ],

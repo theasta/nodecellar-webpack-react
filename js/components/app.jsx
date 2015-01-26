@@ -1,7 +1,8 @@
 var React = require('react');
+var { RouteHandler } = require('react-router');
 var { Nav, Navbar, NavItem, DropdownButton, MenuItem, Grid, Row, Glyphicon } =  require('react-bootstrap');
 var { NavItemLink } = require('react-router-bootstrap');
-var { RouteHandler } = require('react-router');
+var Notification = require('./notification/notification');
 var Footer = require("./footer/Footer");
 var wineActions = require('./../actions/wineActionCreators');
 
@@ -32,6 +33,7 @@ module.exports = React.createClass({
                 </Navbar>
                 <Grid>
                     <Row id="content">
+                        <Notification />
                         <RouteHandler/>
                     </Row>
                     <Footer />

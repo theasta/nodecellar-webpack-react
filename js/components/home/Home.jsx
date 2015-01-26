@@ -1,13 +1,11 @@
 var React = require('react');
-require('./Home.css');
-
 var { Button } = require('react-bootstrap');
+var ButtonHome = require('./ButtonHome');
 var conf = require('../../constants/conf');
-
-var ButtonHome = require('./ButtonHome.jsx');
-
 var githubImg = require('./img/github.png');
 var wineImg = require('./img/wine.png');
+
+require('./Home.css');
 
 module.exports = React.createClass({
     render: function() {

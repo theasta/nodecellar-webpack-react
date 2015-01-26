@@ -1,8 +1,7 @@
 var React = require('react');
+var { Row } = require('react-bootstrap');
 var AboutCol = require('../about/AboutCol');
 var conf = require('../../constants/conf');
-
-var { Row } = require('react-bootstrap');
 
 module.exports = React.createClass({
     render: function() {

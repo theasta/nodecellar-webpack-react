@@ -1,10 +1,10 @@
 var React = require('react');
 var { Route, DefaultRoute } = require('react-router');
-var App = require('./components/App');
-var HomePage = require('./components/pages/HomePage');
-var ListPage = require('./components/pages/ListPage');
-var AddPage = require('./components/pages/AddPage');
-var AboutPage = require('./components/pages/AboutPage');
+var App = require('../components/App');
+var HomePage = require('../components/pages/HomePage');
+var ListPage = require('../components/pages/ListPage');
+var AddPage = require('../components/pages/AddPage');
+var AboutPage = require('../components/pages/AboutPage');
 
 module.exports = (
     <Route handler={App} path="/">

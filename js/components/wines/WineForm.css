@@ -8,6 +8,9 @@
   margin: 0 auto;
 }
 
+#picture {
+    width: 180px;
+}
 .picture-help {
   color:#999;  
 }

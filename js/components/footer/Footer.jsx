@@ -1,7 +1,7 @@
 var React = require('react');
 var { Link } = require('react-router');
-require('./Footer.css');
 var conf = require('../../constants/conf');
+require('./Footer.css');
 
 module.exports = React.createClass({
     render: function() {

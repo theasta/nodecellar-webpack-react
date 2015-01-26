@@ -1,0 +1,3 @@
+module.exports = {
+    NOTIFICATION_ERROR: 'NOTIFICATION_ERROR'
+};

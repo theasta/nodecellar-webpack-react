@@ -1,9 +1,8 @@
 var React = require('react');
-
 var WineListItem = require('./WineListItem');
 var wineStore = require('../../stores/wineStore');
-var paginationConf = require('../../constants/pagination');
 var PaginatorMixin = require('../../mixins/PaginatorMixin');
+var paginationConf = require('../../constants/pagination');
 
 module.exports = React.createClass({
     mixins: [
