@@ -46,7 +46,7 @@ module.exports = React.createClass({
             newState = this.getStateFromStore(nextProps.wineId);
             if (!newState) {
                 notificationActions.error("We couldn't find any wine with this id (" + nextProps.wineId + ")");
-                // @todo send to a non found view
+                // @todo Should send to a 404
                 this.transitionTo('wines');
             }
         }

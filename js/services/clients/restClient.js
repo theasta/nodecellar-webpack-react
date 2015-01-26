@@ -18,7 +18,6 @@ module.exports = {
         });
     },
     createWine: function (wine) {
-        // @todo test
         return $.ajax({
             type: 'POST',
             url: conf.WINE_API,
@@ -27,7 +26,6 @@ module.exports = {
         });
     },
     updateWine: function (wine) {
-        // @todo test
         return $.ajax({
             type: 'PUT',
             url: conf.WINE_API + '/' + wineUtils.getWineId(wine),

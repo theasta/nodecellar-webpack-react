@@ -41,6 +41,9 @@ appDispatcher.register(function(action) {
         case wineConstants.CREATE_WINE_ERROR:
         case wineConstants.UPDATE_WINE_ERROR:
         case wineConstants.DELETE_WINE_ERROR:
+            _notification = { type: 'danger', message: "An error occurred while retrieving wines from the cellar!" };
+            notificationStore.emitChange();
+            break;
         case notificationConstants.NOTIFICATION_ERROR:
             _notification = { type: 'danger', message: action.error.message };
             notificationStore.emitChange();

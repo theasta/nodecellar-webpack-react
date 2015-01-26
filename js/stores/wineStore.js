@@ -74,8 +74,8 @@ var _set = function (wines) {
     }
 }.bind(wineStore);
 
-var _delete = function (wineId) {
-    var wine = _winesById[wineId];
+var _delete = function (wine) {
+    var wineId = wineUtils.getWineId(wine);
     var index = this.indexOf(wine);
     delete _winesById[wineId];
     _wines.splice(index, 1);

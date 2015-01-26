@@ -35,7 +35,7 @@ module.exports = {
             function (data) {
                 appDispatcher.dispatch({
                     type: wineConstants.DELETE_WINE_SUCCESS,
-                    response: wineId // @todo hot fix, replace with data after fixing API
+                    response: data
                 });
             },
             function (err) {

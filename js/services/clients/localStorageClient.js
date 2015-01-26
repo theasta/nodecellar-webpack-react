@@ -88,7 +88,7 @@ module.exports = {
         } else {
             delete winesObj[wineId];
             saveAll(winesObj);
-            defer.resolveWith(null, [wineId]);
+            defer.resolveWith(null, [ _.pick(wine, wineUtils.getWineIdKey()) ]);
         }
         return defer;
     }
