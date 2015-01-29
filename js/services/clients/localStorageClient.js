@@ -32,13 +32,15 @@ initialize();
 module.exports = {
     load: function () {
         var defer = new $.Deferred();
-        var winesObj = getAll();
-        var wines = _.values(winesObj);
-        if (_.isArray(wines)) {
-            defer.resolveWith(null, [wines]);    
-        } else {
-            defer.rejectWith(null, new Error("We couldn't load the wines."));
-        }
+        _.defer(function () {
+            var winesObj = getAll();
+            var wines = _.values(winesObj);
+            if (_.isArray(wines)) {
+                defer.resolveWith(null, [wines]);
+            } else {
+                defer.rejectWith(null, new Error("We couldn't load the wines."));
+            }
+        }, 5000);
         return defer;
     },
     loadWine: function (wineId) {

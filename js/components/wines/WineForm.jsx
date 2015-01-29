@@ -10,24 +10,13 @@ var wineUtils = require('../../utils/wineUtils');
 
 require('./WineForm.css');
 
-var _handleChangeHelper = function (field) {
-    return function (event) {
-        var state = this.state;
-        if (event.target.value && state.errors && state.errors[field]) {
-            delete state.errors[field];
-        }
-        state[field] = event.target.value;
-        this.replaceState(state);
-    };
-};
-
 module.exports = React.createClass({
-    mixins: [React.addons.LinkedStateMixin, Navigation],
+    mixins: [ Navigation ],
     getInitialState: function () {
         return this.getDefaultWine();
     },
     getDefaultWine: function () {
-        // @todo If description is not reset, the textarea doesn't empty itself when switching to an add form
+        // @todo If description is set to undefined, the textarea doesn't empty itself when switching to an add form
         return { year: conf.YEAR_DEFAULT, description: '' };
     },
     componentDidMount: function() {
@@ -100,18 +89,16 @@ module.exports = React.createClass({
         if (!wineId) return;
         return wineStore.getById(wineId);
     },
-    /**
-     * @function
-     */
-    handleChangeName: _handleChangeHelper('name'),
-    /**
-     * @function
-     */
-    handleChangeGrapes: _handleChangeHelper('grapes'),
-    /**
-     * @function
-     */
-    handleChangeCountry: _handleChangeHelper('country'),
+    handleChangeHelper: function (field) {
+        return function (event) {
+            var state = this.state;
+            if (event.target.value && state.errors && state.errors[field]) {
+                delete state.errors[field];
+            }
+            state[field] = event.target.value;
+            this.setState(state);
+        }.bind(this);
+    },
     isAddForm: function () {
         return !this.props.wineId;
     },
@@ -186,8 +173,9 @@ module.exports = React.createClass({
                     <Input
                         type="text" 
                         label="Id" 
-                        labelClassName={labelClassName} wrapperClassName="col-xs-4" 
-                        valueLink={this.linkState('_id')} 
+                        labelClassName={labelClassName} wrapperClassName="col-xs-4"
+                        value={this.state._id}
+                        onChange={this.handleChangeHelper('_id')}
                         disabled 
                     />
                     <Input
@@ -197,7 +185,7 @@ module.exports = React.createClass({
                         label="Name"
                         labelClassName={labelClassName} wrapperClassName="col-xs-4"
                         value={this.state.name}
-                        onChange={this.handleChangeName}
+                        onChange={this.handleChangeHelper('name')}
                     />
                     <Input 
                         type="text"
@@ -206,7 +194,7 @@ module.exports = React.createClass({
                         label="Grapes" 
                         labelClassName={labelClassName} wrapperClassName="col-xs-4"
                         value={this.state.grapes} 
-                        onChange={this.handleChangeGrapes}
+                        onChange={this.handleChangeHelper('grapes')}
                     />
                     <Input 
                         type="text"
@@ -215,27 +203,30 @@ module.exports = React.createClass({
                         label="Country" 
                         labelClassName={labelClassName} wrapperClassName="col-xs-4" 
                         value={this.state.country}
-                        onChange={this.handleChangeCountry}
+                        onChange={this.handleChangeHelper('country')}
                     />
                     <Input 
                         type="text"
                         label="Region"
                         labelClassName={labelClassName} wrapperClassName="col-xs-4"
-                        valueLink={this.linkState('region')}
+                        value={this.state.region}
+                        onChange={this.handleChangeHelper('region')}
                     />
                     <Input 
                         type="select" 
                         label="Year" 
-                        labelClassName={labelClassName} wrapperClassName="col-xs-4" 
-                        valueLink={this.linkState('year')} >
+                        labelClassName={labelClassName} wrapperClassName="col-xs-4"
+                        value={this.state.year}
+                        onChange={this.handleChangeHelper('year')}
+                    >
                         {options}
                     </Input>
                     <Input 
                         type="textarea" 
                         label="Notes" 
-                        labelClassName={labelClassName} wrapperClassName="col-xs-8" 
-                        defaultValue=""
-                        valueLink={this.linkState('description')} 
+                        labelClassName={labelClassName} wrapperClassName="col-xs-8"
+                        value={this.state.description} 
+                        onChange={this.handleChangeHelper('description')}
                         rows="6"
                     />
                     <div className="form-group">
