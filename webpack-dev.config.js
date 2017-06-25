@@ -6,7 +6,6 @@ module.exports = require('./webpack/create-config')({
     devServer: "http://localhost:2992",
     hmr: true,
     minimize: false,
-    newWatch: false,
     longTermCaching: false,
     separateStylesheet: true,
     separateStylesheetPublicPath: "",

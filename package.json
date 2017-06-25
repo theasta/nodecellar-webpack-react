@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev-server": "webpack-dev-server --config webpack-dev.config.js --colors --port 2992 --hot --inline"
+    "dev-server": "webpack-dev-server --config webpack-dev.config.js --colors --port 2992 --hot --inline",
+    "dev": "webpack --config webpack-dev.config.js --colors --watch"
   },
   "repository": {
     "type": "git",

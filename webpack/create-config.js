@@ -6,6 +6,12 @@ var path = require('path');
 var distFolder = "dist";
 var srcFolder = path.join(__dirname, "js");
 
+// should be options
+var rootDir = path.join(__dirname, "..");
+var distDirName = "dist";
+var distDir = path.join(rootDir, distDirName);
+var srcDir = path.join(rootDir, "js");
+
 var loaders = [
     {
         test: /\.(png|jpg)$/,
@@ -63,11 +69,11 @@ module.exports = function (options) {
 
     /* output */
     var publicPath = options.devServer ?
-        options.devServer + '/' + distFolder + '/':
-        '/' + distFolder + '/';
+        options.devServer + '/' + distDirName + '/':
+        '/' + distDirName + '/';
 
     var output = {
-        path: path.join(__dirname, distFolder),
+        path: distDir,
         publicPath: publicPath,
         filename: "[name].js" + (options.longTermCaching  ? "?[chunkhash]" : ""),
         chunkFilename: (options.devServer ? "[id].js" : "[name].js") + (options.longTermCaching ? "?[chunkhash]" : ""),
@@ -82,7 +88,7 @@ module.exports = function (options) {
     
     /* plugins */
     var plugins = [
-        new webpack.optimize.OccurenceOrderPlugin(true)
+        new webpack.optimize.OccurrenceOrderPlugin(true)
     ];
     if (options.separateStylesheet) {
         plugins.push(new ExtractTextPlugin("[name].css"));
@@ -94,7 +100,7 @@ module.exports = function (options) {
                     chunkModules: true
                 });
                 jsonStats.publicPath = publicPath;
-                require("fs").writeFileSync(path.join(__dirname, distFolder, "stats.json"), JSON.stringify(jsonStats));
+                require("fs").writeFileSync(path.join(distDir, "stats.json"), JSON.stringify(jsonStats));
             });
         });
     }
@@ -107,10 +113,6 @@ module.exports = function (options) {
 
     if (options.commonsChunk) {
         plugins.push(new webpack.optimize.CommonsChunkPlugin("commons", "commons.js" + (options.longTermCaching ? "?[chunkhash]" : "")));
-    }
-
-    if (options.newWatch) {
-        plugins.push(new webpack.NewWatchingPlugin());
     }
 
     return {
